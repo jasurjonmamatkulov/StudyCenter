@@ -1,9 +1,3 @@
-<?php
-
-//include "dataBase.php";
-//include "student_functions.php";
-?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,21 +7,14 @@
 </head>
 <body>
 <h1 style="text-align: center;"> Date About Students</h1>
-<?php
-$page = 1;
-if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-}
-?>
 <div class="container" style="text-align: center;">
     <button class="btn btn-primary my-5">
-        <a href="/student_add.php" class="text-light">Add Student</a>
+        <a href="#" class="text-light">Add Student</a>
     </button>
     <table class="table table-striped">
         <thead style="text-align: center">
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Photo</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Email</th>
@@ -37,10 +24,9 @@ if (isset($_GET['page'])) {
         </thead>
         <tbody>
         <?php
-        foreach (getList("student", $page) as $item) {
+        foreach ($list as $item) {
             echo "<tr>
                   <td>" . $item['id'] . "</td>
-                  <td><img class='w-50' src='/uploads/".$item['image']."'></td>
                   <td>" . $item['first_name'] . "</td>
                   <td>" . $item['last_name'] . "</td>
                   <td>" . $item['email'] . "</td>
@@ -56,14 +42,14 @@ if (isset($_GET['page'])) {
 </div>
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-        <?php
-        for ($i = 1; $i <= getPageCount("student"); $i++) { ?>
-            <li class="page-item <?php if ($page == $i) {
-                echo "active";
-            } else {
-                echo "noactive";
-            } ?>"><a class="page-link" href="/student_view.php?page=<?= $i ?>"><?= $i ?></a></li>
-        <?php } ?>
+<!--        --><?php
+//        for ($i = 1; $i <= getPageCount("student"); $i++) { ?>
+<!--            <li class="page-item --><?php //if ($page == $i) {
+//                echo "active";
+//            } else {
+//                echo "noactive";
+//            } ?><!--"><a class="page-link" href="/student_view.php?page=--><?php //= $i ?><!--">--><?php //= $i ?><!--</a></li>-->
+<!--        --><?php //} ?>
     </ul>
 </nav>
 </body>

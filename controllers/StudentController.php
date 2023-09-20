@@ -2,6 +2,7 @@
 
 namespace controllers;
 
+use vendor\myframe\Connection;
 use vendor\myframe\Controller;
 use vendor\myframe\Views;
 
@@ -9,8 +10,13 @@ class StudentController extends Controller
 {
     public function list()
     {
-
-        $this->view->render("student/list");
+        $sql = "select * from student";
+        $conn = new Connection();
+        $db = $conn->getConnection();
+        $state = $db->prepare($sql);
+        $state->execute();
+        $result = $state->fetchAll();
+        $this->view->render("student/list", ['list' => $result]);
     }
     public function add()
     {
